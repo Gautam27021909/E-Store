@@ -7,6 +7,7 @@ from rest_framework.response import Response
 from rest_framework import status
 from django.core.mail import EmailMessage
 import random
+from .models import MenProduct
 
 def index(request):
     return render(request, 'index.html')
@@ -23,8 +24,9 @@ def contact(reqest):
 def my_account(request):
     return render(request, "my-account.html")
 
-def product_detail(request):
-    return render(request, 'product-detail.html')
+def product_detail(request, id):
+    menproducts = MenProduct.objects.filter(id=id)
+    return render(request, 'product-detail.html' , {'menproducts': menproducts})
 
 def product_list(request):
     return render(request, 'product-list.html')
@@ -34,6 +36,10 @@ def wishlist(request):
 
 def Reset_password(request):
     return render(request, 'reset_password.html')
+
+def menProduct(request):
+    menproducts = MenProduct.objects.all()
+    return render(request, "menproduct.html", {'menproducts':menproducts})
 
 
 class RegisterView(generics.CreateAPIView):
