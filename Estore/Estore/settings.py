@@ -130,3 +130,7 @@ DEFAULT_FROM_EMAIL = "jaydesai2304@gmail.com"
 TEMPLATE_DIRS = (
     os.path.join(BASE_DIR, 'templates'),
 )
+
+
+MEDIA_URL = '/media/'
+MEDIA_ROOT = BASE_DIR / "media"
